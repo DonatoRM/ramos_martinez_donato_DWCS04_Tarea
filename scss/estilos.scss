@@ -1,2 +1,12 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+$custom-colors: (
+    "fondo-claro": #c0c0c0,
+    "fondo-formulario-preferencias": white,
+    "verde_lima": #5fc86b,
+    "azul_oscuro": #244cfc,
+    "gris_perla": #ebebeb,
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
