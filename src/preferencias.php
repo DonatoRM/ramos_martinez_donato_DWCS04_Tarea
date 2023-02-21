@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
-// Abrimos una sesión
+/* 
+    Abrimos nuestra sesión. Con ello, podremos almacenar nuestras preferencias, e ir usándolas cuando sea
+    necesario, a medida que nos lo pida el programa.
+*/
 session_start();
 ?>
 <html lang="es">
@@ -14,9 +17,20 @@ session_start();
     <meta name="keyword" content="html,css,javascript,php,sesiones,bootstrap,awesome">
     <meta name="author" content="Donato Ramos Martínez">
     <title>Tarea Unidad 4</title>
+    <!--
+        En el siguiente fichero CSS se han almacenado una serie de cases que provienen de Bootstrap y de
+        FontAwesome. He usado para ello el pre-compilador SASS, y también he aprovechado SASS para añadir
+        una serie de colores que no vienen por defecto en Bootstrap
+     -->
     <link rel="stylesheet" type="text/css" href="../css/estilos.css">
 </head>
 <?php
+/*
+ * Si se ha pulsado el botón Establecer, se cargan en la sesión todos los parámetros insertados en el 
+ * formulario. Esto es gracias a que, al ser un botón de submit recarga la página con el método post
+ * del formulario. Para que desaparezca la pulsación del botón, se recarga la página con su URL normal
+ * pero sin los $_POST.
+*/
 if (isset($_POST['establecer'])) {
     $_SESSION['idioma'] = $_POST['idioma'];
     $_SESSION['perfil'] = $_POST['perfil'];
@@ -40,6 +54,12 @@ if (isset($_POST['establecer'])) {
                     </div>
                 </div>
                 <?php
+                /*
+                 * Una vez que se ha pulsado el botón Establecer y se han insertado las constantes $_SESSION,
+                 * en una de ellas ($_SESSION['mensaje']) viene implícito el mensaje que aparecerá por
+                 * pantalla 'Preferencias de usuario guardadas'. Una vez usado este mensaje, deberemos de 
+                 * borrarlo.
+                */
                 if (isset($_SESSION['mensaje'])) {
                     echo '<div class="row mt-1 mb-1">';
                     echo '<div class="col">';
@@ -60,6 +80,9 @@ if (isset($_POST['establecer'])) {
                     </div>
                     <select class="col form-select me-3" name="idioma" id="idIdioma">
                         <?php
+                        /*
+                         * Según la constante $_SESSION['idioma'] añadiremos el selected que toque
+                        */
                         if (isset($_SESSION['idioma'])) {
                             if ($_SESSION['idioma'] == 'es') {
                                 echo "<option value='es' selected>Español</option>";
@@ -89,6 +112,9 @@ if (isset($_POST['establecer'])) {
                     </div>
                     <select class="col form-select me-3" name="perfil" id="idPerfil">
                         <?php
+                        /*
+                         * Según la constante $_SESSION['perfil'] añadiremos el selected que toque
+                        */
                         if (isset($_SESSION['perfil'])) {
                             if ($_SESSION['perfil'] == 'yes') {
                                 echo "<option value='yes' selected>Sí</option>";
@@ -118,6 +144,10 @@ if (isset($_POST['establecer'])) {
                     </div>
                     <select class="col form-select me-3" name="zonaHoraria" id="idZonaHoraria">
                         <?php
+                        /*
+                         * Según la constante $_SESSION['zonaHoraria'] añadiremos el selected que toque
+                         * y el resto de etiquetas option quedarán sin él.
+                        */
                         if (isset($_SESSION['zonaHoraria'])) {
                             switch ($_SESSION['zonaHoraria']) {
                                 case '-2':

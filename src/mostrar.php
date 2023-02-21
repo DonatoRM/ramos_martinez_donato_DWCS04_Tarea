@@ -1,4 +1,8 @@
 <?php
+/* 
+ * Se indica que la sesión deberá de estar abierta para poder disponer de las constantes $_SESSION que se
+ * almacenaron en la página preferencias.php
+*/
 session_start();
 ?>
 <!DOCTYPE html>
@@ -16,6 +20,13 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../css/estilos.css">
 </head>
 <?php
+/*
+ * Si pulsamos el botón borrar y no se guardaron las preferencias en la página preferencias.php o las 
+ * preferencias fueron borradas en esta página, se carga una constante $_SESSION['mensaje'] con 
+ * 'Debes fijar primero las preferencias.'. Si se pulsó el botón borrar y ya se habían grabado las
+ * preferencias, las borra y se carga la constante $_SESSION[''mensaje'] con 'Preferencias borradas'.
+ * En ambos casos se recarga la página de nuevo.
+*/
 if (isset($_POST['borrar'])) {
     if (!isset($_SESSION['idioma']) || !isset($_SESSION['perfil']) || !isset($_SESSION['zonaHoraria'])) {
         $_SESSION['mensaje'] = 'Debes fijar primero las preferencias.';
@@ -44,6 +55,11 @@ if (isset($_POST['borrar'])) {
                     </div>
                 </div>
                 <?php
+                /*
+                 * Una vez que se ha pulsado el botón borrar y se han borrado las constantes $_SESSION,
+                 * en una de ellas ($_SESSION['mensaje']) viene implícito el mensaje que aparecerá por
+                 * pantalla. Una vez usado este mensaje, deberemos de borrarlo.
+                */
                 if (isset($_SESSION['mensaje'])) {
                     echo '<div class="row mt-1 mb-1">';
                     echo '<div class="col">';
@@ -57,6 +73,11 @@ if (isset($_POST['borrar'])) {
                     <div class="col">
                         <span>Idioma:</span>
                         <?php
+                        /*
+                         * Como en las constantes $_SESSION se han guardado los valores de las opciones, y aquí nos
+                         * hacen falta los campos, debemos de hacer la conversión de su valor correspondiente al
+                         * nombre del campo para poder mostrarlo.
+                        */
                         if (isset($_SESSION['idioma'])) {
                             if ($_SESSION['idioma'] == 'es') {
                                 echo "<span>Español</span>";
@@ -73,6 +94,9 @@ if (isset($_POST['borrar'])) {
                     <div class="col">
                         <span>Perfil Público:</span>
                         <?php
+                        /*
+                         * Es por el mismo motivo que el anterior comentario.
+                        */
                         if (isset($_SESSION['perfil'])) {
                             if ($_SESSION['perfil'] == 'no') {
                                 echo "<span>No</span>";
@@ -89,6 +113,10 @@ if (isset($_POST['borrar'])) {
                     <div class="col">
                         <span>Zona horaria:</span>
                         <?php
+                        /*
+                         * Es por el mismo motivo que el anterior comentario pero, esta vez, en vez de utilizar una condición
+                         * usamos la sentencia switch
+                        */
                         if (isset($_SESSION['zonaHoraria'])) {
                             switch ($_SESSION['zonaHoraria']) {
                                 case '-2':
