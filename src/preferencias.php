@@ -14,7 +14,6 @@ session_start();
     <meta name="keyword" content="html,css,javascript,php,sesiones,bootstrap,awesome">
     <meta name="author" content="Donato Ramos Martínez">
     <title>Tarea Unidad 4</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../css/estilos.css">
 </head>
 <?php
@@ -180,7 +179,7 @@ if (isset($_POST['establecer'])) {
             </form>
         </section>
     </main>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>
