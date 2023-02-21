@@ -6,6 +6,7 @@ $custom-colors: (
     "verde_lima": #5fc86b,
     "azul_oscuro": #244cfc,
     "gris_perla": #ebebeb,
+    "gris_oscuro": #808080,
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../node_modules/bootstrap/scss/bootstrap.scss";

@@ -42,7 +42,7 @@ if (isset($_POST['borrar'])) {
 }
 ?>
 
-<body class="container bg-fondo-claro">
+<body class="container bg-gris_oscuro">
     <main>
         <section class="row justify-content-center">
             <form class="col-4 card mt-5 bg-verde_lima text-white" name="formularioMostrar" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="_self">
@@ -145,10 +145,10 @@ if (isset($_POST['borrar'])) {
                     </div>
                 </div>
                 <div class="row pb-4 mt-3 justify-content-start">
-                    <div class="col-3">
+                    <div class="col-md-3">
                         <a href="preferencias.php" class="btn btn-azul_oscuro">Establecer</a>
                     </div>
-                    <div class="col-2">
+                    <div class="col-md-2">
                         <button type="submit" name="borrar" value='ok' class="btn btn-danger text-white">Borrar</button>
                     </div>
                 </div>
